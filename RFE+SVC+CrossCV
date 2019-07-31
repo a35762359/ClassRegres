@@ -5,6 +5,7 @@ RFE+SVC+for网格寻优+寻优内Cross平均
 
 import pandas as pd
 import numpy as np
+from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
@@ -34,6 +35,15 @@ plt.show()
 x_trainval_rfe = select.transform(x_trainval)
 x_test_rfe = select.transform(x_test)
 x_rfe=select.transform(x)
+
+# pca = PCA(n_components=0.85) # PCA替换
+# pca.fit(x)
+# x_pca = pca.transform(x)
+# # pd.DataFrame(low_d).to_excel(outputfile)
+# pca.components_  
+# ra = pca.explained_variance_ratio_  
+
+
 bestscore = 0
 for gamma in [0.001, 0.01, 0.1, 1, 10, 100]:
     for c in [0.001, 0.01, 0.1, 1, 10, 100]:
